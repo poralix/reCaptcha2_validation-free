@@ -1,0 +1,11 @@
+IMPORTANT!
+
+  Go to https://www.google.com/recaptcha/admin#list and register your gold.poralix.net there
+  You will get <Site key> and <Secret key> which you should add into the config file: config.inc.php
+  Open /var/www/html/__captcha_validation_free-<md5-hash-of-hostname>/config.inc.php and update:
+
+      $publickey  = "<Site Key>";
+      $privatekey = "<Secret Key>";
+
+  with your actual keys!
+

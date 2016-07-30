@@ -1,0 +1,14 @@
+#############################################################################
+#
+#    reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.2-Free
+#
+#############################################################################
+
+<IfModule mod_php5.c>
+    php_flag opcache.enable Off
+</IfModule>
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-s
+RewriteRule ^(.*)$ index.php [L]

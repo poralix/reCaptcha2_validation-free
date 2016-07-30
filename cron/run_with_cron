@@ -1,0 +1,56 @@
+#!/bin/bash
+##############################################################################
+#
+#    reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.2-Free
+#
+#    Copyright (C) 2016  Alex S Grebenschikov
+#    Written by Alex S Grebenschikov
+#            web-site:  www.poralix.com
+#            emails to: support@poralix.com
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#############################################################################
+#
+#    Copyright (c) 2007 reCAPTCHA -- http://recaptcha.net
+#    AUTHORS:
+#          Mike Crawford
+#          Ben Maurer
+#
+#############################################################################
+
+INSTALL_DIR="|DIR_INSTALL|";
+DATA_DIR=`cat ${INSTALL_DIR}/config.inc.php | grep '^\$datadir' | cut -d\" -f2`;
+DAYS=`cat ${INSTALL_DIR}/config.inc.php | grep '^\$clear_after_days' | cut -d\" -f2`;
+DAYS=${DAYS:-7}
+
+if [ -e "/usr/local/directadmin/directadmin" ]; then
+    USER="webapps";
+elif [ -e "/usr/local/cpanel/version" ]; then
+    USER="nobody";
+else
+    USER="apache";
+fi
+
+[ -d "${DATA_DIR}" ] || DATA_DIR="${INSTALL_DIR}/${DATA_DIR}";
+
+if [ -d "${DATA_DIR}" ];
+then
+{
+    find ${DATA_DIR} -type f -mtime +${DAYS} -name _\*.dat -exec rm -v {} \;
+    chown -R ${USER}:${USER} ${INSTALL_DIR};
+}
+fi;
+
+exit;
