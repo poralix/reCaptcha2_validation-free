@@ -130,7 +130,7 @@ echo '<LocationMatch "wp-login.php">' >> ${HPRC_FILE};
 echo '        RewriteCond '${DIR_INSTALL}'/_data/ips/_%{REMOTE_ADDR}.dat !-f' >> ${HPRC_FILE};
 echo '        RewriteCond '${DIR_INSTALL}'/_data/ips/_%{HTTP:X-Forwarded-For}.dat !-f' >> ${HPRC_FILE};
 echo '        RewriteCond '${DIR_INSTALL}'/_data/ips/_%{HTTP:CF-Connecting-IP}.dat !-f' >> ${HPRC_FILE};
-echo '        RewriteRule ^ http://'$(hostname)'/__captcha_validation/?ref=%{REQUEST_SCHEME}://%{SERVER_NAME}&uri=/wp-login.php&c=%{REMOTE_ADDR} [L]' >> ${HPRC_FILE};
+echo '        RewriteRule ^ http://'$(hostname)'/__captcha_validation/?ref=%{REQUEST_SCHEME}://%{SERVER_NAME}&uri=%{REQUEST_URI}&c=%{REMOTE_ADDR} [L]' >> ${HPRC_FILE};
 echo '</LocationMatch>' >> ${HPRC_FILE};
 echo "" >> ${HPRC_FILE};
 
