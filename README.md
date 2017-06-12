@@ -29,19 +29,19 @@ Written by Alex S Grebenschikov.
 # Supported Control Panels
 
 - Directadmin (with CustomBuild 2.x).
-- cPanel.
+- cPanel (not much tested yet).
 - With No control panel servers.
 
 # Requirements
 
 - Apache is required either as a front-end or a back-end behind NGINX as a reverse proxy.
 - PHP.
-- Pair of keys from https://www.google.com/recaptcha/admin registered for your hostname
+- Pair of keys from https://www.google.com/recaptcha/admin registered for your hostname.
 
 # Installation
 
-- After installation is completed you should visit https://www.google.com/recaptcha/admin and register your hostname
-- You will get <Site key> and <Secret key> which you should add into the config file: config.inc.php
+- After installation is completed you should visit https://www.google.com/recaptcha/admin and register your hostname.
+- You will get _Site key_ and _Secret key_ which you should add into the config file: config.inc.php.
 - Open ${DIR_INSTALL}/config.inc.php and update:
 ```
 $publickey  = "<Site Key>";';
