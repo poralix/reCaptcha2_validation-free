@@ -62,7 +62,7 @@ TMP_DIR=$(mktemp -d /var/www/html/tmp_reCaptcha2_validation.XXXXX);
 DIR_INSTALL="/var/www/html/__captcha_validation_free-$(hostname | openssl md5 | sed 's/^.* //')";
 CRON_FILE="/etc/cron.daily/clear_recaptcha_ips.cron";
 
-URL="https://files.plugins-da.net/dl/reCaptcha2_validation-free.tar.gz";
+URL="https://github.com/poralix/reCaptcha2_validation-free/archive/master.tar.gz";
 wget -q --no-check-certificate ${URL} -O ${TMP_FILE};
 
 if [ ! -s "${TMP_FILE}" ]; then
