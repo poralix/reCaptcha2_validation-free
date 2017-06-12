@@ -40,6 +40,20 @@ Written by Alex S Grebenschikov.
 
 # Installation
 
+```
+cd /usr/local/src
+wget -O reCaptcha2_validation-free.tar.gz https://github.com/poralix/reCaptcha2_validation-free/archive/master.tar.gz
+tar -zxvf reCaptcha2_validation-free.tar.gz
+cd reCaptcha2_validation-free-master/install/
+./install.sh
+```
+and clean files:
+```
+cd /usr/local/src
+rm -rf reCaptcha2_validation*
+rm -rf /var/www/html/reCaptcha2_validation-free.tar.gz
+```
+
 - After installation is completed you should visit https://www.google.com/recaptcha/admin and register your hostname.
 - You will get _Site key_ and _Secret key_ which you should add into the config file: config.inc.php.
 - Open ${DIR_INSTALL}/config.inc.php and update:
