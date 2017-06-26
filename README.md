@@ -38,6 +38,11 @@ Written by Alex S Grebenschikov.
 - PHP.
 - Pair of keys from https://www.google.com/recaptcha/admin registered for your hostname.
 
+# IPv6 
+
+**IMPORTANT** Since users are redirected to http://hostname/ you should make sure that your hostname has a valid IPv6 record in order to validation 
+for IPv6 to work properly!
+
 # Installation
 
 ```
