@@ -52,7 +52,7 @@ $URI=(isset($_POST["uri"]) && $_POST["uri"]) ? $_POST["uri"] : ((isset($_GET["ur
 $CLIENT_IP=(isset($_SERVER["REMOTE_ADDR"]) && $_SERVER["REMOTE_ADDR"]) ? $_SERVER["REMOTE_ADDR"] : false;
 $LANG=(isset($_SERVER["HTTP_ACCEPT_LANGUAGE"]) && $_SERVER["HTTP_ACCEPT_LANGUAGE"]) ? strtolower(substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2)): "en";
 
-$COMPANY_HTML = "<a href='".strip_tags($company_site)."'>".strip_tags($company_name)."</a>";
+$COMPANY_HTML = "<a href='".strip_tags($company_site)."' target='_blank'>".strip_tags($company_name)."</a>";
 
 $recaptcha_response=(isset($_POST["g-recaptcha-response"]) && $_POST["g-recaptcha-response"]) ? $_POST["g-recaptcha-response"] : false;
 $api_response = false;
