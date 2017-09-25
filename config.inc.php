@@ -49,3 +49,9 @@ $use_local_css = false;
 
 # use local js
 $use_local_js = false;
+
+# Company Name
+$company_name = "";
+
+# Company Site
+$company_site = "http://";

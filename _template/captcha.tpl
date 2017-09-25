@@ -92,6 +92,17 @@
                             </div>
                         </form>
                     </div>
+                    <div class="footer">
+                        <div class="lang-en" style="dispay: none;">
+                            Hosted by |COMPANY_HTML|.
+                        </div>
+                        <div class="lang-nl" style="dispay: none;">
+                            Hosted by |COMPANY_HTML|.
+                        </div>
+                        <div class="lang-ru" style="dispay: none;">
+                            Размещается на хостинге |COMPANY_HTML|.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

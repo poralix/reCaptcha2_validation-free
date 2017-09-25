@@ -3,7 +3,7 @@
 #
 #    reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.2-Free
 #
-#    Copyright (C) 2016  Alex S Grebenschikov
+#    Copyright (C) 2016,2017 Alex S Grebenschikov
 #    Written by Alex S Grebenschikov
 #            web-site:  www.poralix.com
 #            emails to: support@poralix.com
@@ -51,6 +51,8 @@ $REF=(isset($_POST["ref"]) && $_POST["ref"]) ? $_POST["ref"] : ((isset($_GET["re
 $URI=(isset($_POST["uri"]) && $_POST["uri"]) ? $_POST["uri"] : ((isset($_GET["uri"]) && $_GET["uri"]) ? $_GET["uri"] : false);
 $CLIENT_IP=(isset($_SERVER["REMOTE_ADDR"]) && $_SERVER["REMOTE_ADDR"]) ? $_SERVER["REMOTE_ADDR"] : false;
 $LANG=(isset($_SERVER["HTTP_ACCEPT_LANGUAGE"]) && $_SERVER["HTTP_ACCEPT_LANGUAGE"]) ? strtolower(substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2)): "en";
+
+$COMPANY_HTML = "<a href='".strip_tags($company_site)."'>".strip_tags($company_name)."</a>";
 
 $recaptcha_response=(isset($_POST["g-recaptcha-response"]) && $_POST["g-recaptcha-response"]) ? $_POST["g-recaptcha-response"] : false;
 $api_response = false;
@@ -129,6 +131,7 @@ if (is_file($_tpl_file) && ($TPL=file_get_contents($_tpl_file)))
         $LOAD_JQUERY_JS = '<script src="/__captcha_validation/_js/jquery-2.2.2.min.js"></script>';
         $LOAD_BOOTSTRAP_JS = '<script src="/__captcha_validation/_js/bootstrap.min.js"></script>';
     }
+    
     $HTML = $TPL;
     $REPLACES = [
         "LANG"               => $LANG,
@@ -140,6 +143,7 @@ if (is_file($_tpl_file) && ($TPL=file_get_contents($_tpl_file)))
         "LOAD_BOOTSTRAP_JS"  => $LOAD_BOOTSTRAP_JS,
         "LOAD_BOOTSTRAP_CSS" => $LOAD_BOOTSTRAP_CSS,
         "LOAD_CORE_CSS"      => $LOAD_CORE_CSS,
+        "COMPANY_HTML"       => $COMPANY_HTML,
         ];
     foreach ($REPLACES as $TOKEN => $VAL)
     {
