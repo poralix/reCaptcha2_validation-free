@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- reCAPTCHA VALIDATION FOR WordPress Login page by Poralix $ v.0.2-Free //-->
+        <!-- reCAPTCHA VALIDATION FOR WordPress Login page by Poralix $ v.0.3-Free //-->
 
         <title>reCaptcha Validation for WordPress Login Page</title>
 
@@ -59,6 +59,7 @@
                                         Before you can login into WordPress, you have confirm that you are a
                                         human being. You can do this by confirming the reCAPTCHA below.
                                     </p>
+                                    <div class="warning">|WARNING_EN|</div>
                                 </div>
                                 <!-- /.lang-en -->
 
@@ -68,6 +69,7 @@
                                         van Wordpress. Voordat je kunt inloggen is het belangrijk om aan te tonen 
                                         dat je een mens bent. Dit doe je door onderstaande reCAPTCHA te bevestigen.
                                     </p>
+                                    <div class="warning">|WARNING_NL|</div>
                                 </div>
                                 <!-- /.lang-nl -->
 
@@ -78,6 +80,7 @@
                                         вам необходимо подтвердить, что вы являетесь человеком. Вы можете сделать это, 
                                         пройдя тест reCaptcha ниже.
                                     </p>
+                                    <div class="warning">|WARNING_RU|</div>
                                 </div>
                                 <!-- /.lang-ru -->
 
@@ -124,8 +127,7 @@
                     $('button[type="submit"]').html('Bevestig');
                 } else if (lang == 'ru') {
                     $('button[type="submit"]').html('Продолжить');
-                } else // (lang == 'en') 
-                {
+                } else {
                     $('button[type="submit"]').html('Confirm');
                 }
 

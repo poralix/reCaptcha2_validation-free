@@ -1,12 +1,14 @@
 #!/bin/bash
 ##############################################################################
 #
-#    reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.2-Free
+#    reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.3-Free
 #
-#    Copyright (C) 2016  Alex S Grebenschikov
+#    Copyright (C) 2016,2017 Alex S Grebenschikov
 #    Written by Alex S Grebenschikov
 #            web-site:  www.poralix.com
 #            emails to: support@poralix.com
+#
+#    Last modified: Thu Nov 23 16:01:34 +07 2017
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by

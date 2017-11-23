@@ -1,10 +1,10 @@
 # Version
 
-reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.2-Free
+reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.3-Free
 
 # Copyright notice
 
-Copyright (C) 2016  Alex S Grebenschikov.
+Copyright (C) 2016,2017 Alex S Grebenschikov.
 Written by Alex S Grebenschikov.
 
 # Contacts

@@ -1,12 +1,14 @@
 <?php
 ##############################################################################
 #
-#    reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.2-Free
+#    reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.3-Free
 #
 #    Copyright (C) 2016,2017 Alex S Grebenschikov
 #    Written by Alex S Grebenschikov
 #            web-site:  www.poralix.com
 #            emails to: support@poralix.com
+#
+#    Last modified: Thu Nov 23 16:01:34 +07 2017
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -49,6 +51,7 @@ $ERROR="";
 
 $REF=(isset($_POST["ref"]) && $_POST["ref"]) ? $_POST["ref"] : ((isset($_GET["ref"]) && $_GET["ref"]) ? $_GET["ref"] : false);
 $URI=(isset($_POST["uri"]) && $_POST["uri"]) ? $_POST["uri"] : ((isset($_GET["uri"]) && $_GET["uri"]) ? $_GET["uri"] : false);
+$REDIRECTED_IP=(isset($_POST["c"]) && $_POST["c"]) ? $_POST["c"] : ((isset($_GET["c"]) && $_GET["c"]) ? $_GET["c"] : false);
 $CLIENT_IP=(isset($_SERVER["REMOTE_ADDR"]) && $_SERVER["REMOTE_ADDR"]) ? $_SERVER["REMOTE_ADDR"] : false;
 $LANG=(isset($_SERVER["HTTP_ACCEPT_LANGUAGE"]) && $_SERVER["HTTP_ACCEPT_LANGUAGE"]) ? strtolower(substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2)): "en";
 
@@ -131,7 +134,14 @@ if (is_file($_tpl_file) && ($TPL=file_get_contents($_tpl_file)))
         $LOAD_JQUERY_JS = '<script src="/__captcha_validation/_js/jquery-2.2.2.min.js"></script>';
         $LOAD_BOOTSTRAP_JS = '<script src="/__captcha_validation/_js/bootstrap.min.js"></script>';
     }
-    
+
+    if ($REDIRECTED_IP && ($REDIRECTED_IP !== $CLIENT_IP))
+    {
+        $WARNING_EN = 'We detected that IP address from which you connected to <a href="'.htmlspecialchars($REF).'" target="_blank">the target site</a> differs from the current IP <b>'.$CLIENT_IP.'</b>, and it might bring to issues with IP validation.';
+        $WARNING_NL = 'We hebben vastgesteld dat het IP-adres waarmee u verbinding hebt gemaakt met <a href="'.htmlspecialchars($REF).'" target="_blank">de doelsite</a> anders is dan het huidige IP-adres <b>'.$CLIENT_IP.'</b>, en dit kan problemen met IP-validatie veroorzaken.';
+        $WARNING_RU = 'IP адрес, с которого вы подключились <a href="'.htmlspecialchars($REF).'" target="_blank">к сайту</a> не соответствуют текущему <b>'.$CLIENT_IP.'</b>, что в свою очередь может привести к зацикливанию авторизации IP.';
+    }
+
     $HTML = $TPL;
     $REPLACES = [
         "LANG"               => $LANG,
@@ -144,6 +154,9 @@ if (is_file($_tpl_file) && ($TPL=file_get_contents($_tpl_file)))
         "LOAD_BOOTSTRAP_CSS" => $LOAD_BOOTSTRAP_CSS,
         "LOAD_CORE_CSS"      => $LOAD_CORE_CSS,
         "COMPANY_HTML"       => $COMPANY_HTML,
+        "WARNING_EN"         => $WARNING_EN,
+        "WARNING_NL"         => $WARNING_NL,
+        "WARNING_RU"         => $WARNING_RU,
         ];
     foreach ($REPLACES as $TOKEN => $VAL)
     {
