@@ -1,7 +1,7 @@
 <?php
 ##############################################################################
 #
-#    reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.3-Free
+#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.3-Free
 #
 #    Copyright (C) 2016,2017 Alex S Grebenschikov
 #    Written by Alex S Grebenschikov
@@ -139,7 +139,7 @@ if (is_file($_tpl_file) && ($TPL=file_get_contents($_tpl_file)))
     {
         $WARNING_EN = 'We detected that IP address from which you connected to <a href="'.htmlspecialchars($REF).'" target="_blank">the target site</a> differs from the current IP <b>'.$CLIENT_IP.'</b>, and it might bring to issues with IP validation.';
         $WARNING_NL = 'We hebben vastgesteld dat het IP-adres waarmee u verbinding hebt gemaakt met <a href="'.htmlspecialchars($REF).'" target="_blank">de doelsite</a> anders is dan het huidige IP-adres <b>'.$CLIENT_IP.'</b>, en dit kan problemen met IP-validatie veroorzaken.';
-        $WARNING_RU = 'IP адрес, с которого вы подключились <a href="'.htmlspecialchars($REF).'" target="_blank">к сайту</a> не соответствуют текущему <b>'.$CLIENT_IP.'</b>, что в свою очередь может привести к зацикливанию авторизации IP.';
+        $WARNING_RU = 'IP адрес, с которого вы подключились <a href="'.htmlspecialchars($REF).'" target="_blank">к сайту</a> не соответствует текущему <b>'.$CLIENT_IP.'</b>, что в свою очередь может привести к зацикливанию авторизации IP.';
     }
 
     $HTML = $TPL;
