@@ -143,9 +143,9 @@
 
             $( window ).load(function() {
                 var lang="|LANG|";
-                if (lang != "en") {
+                //if (lang != "en") {
                     recaptcha_change_lang(lang);
-                }
+                //}
             });
         //-->
         </script>
