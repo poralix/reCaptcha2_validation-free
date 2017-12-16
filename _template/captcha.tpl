@@ -120,7 +120,6 @@
             {
                 // Hide everything.
                 $('[class^=lang-]').hide();
-
                 // Switch to the chosen language.
                 $('.lang-' + lang).show();
                 if (lang == 'nl') {
@@ -130,23 +129,18 @@
                 } else {
                     $('button[type="submit"]').html('Confirm');
                 }
-
                 // Set reCAPTCHA language.
                 $('.g-recaptcha').html('');
                 $('#captcha').find('script').replaceWith($('<script>').attr('type', 'text/javascript').attr('src', 'https://www.google.com/recaptcha/api.js?hl=' + lang));
             }
-
             $('.change-lang').click(function(e) {
                 e.preventDefault();
                 var lang = $(this).attr('data-lang');
                 recaptcha_change_lang(lang);
             });
-
             $( window ).load(function() {
                 var lang="|LANG|";
-                if (lang != "en") {
-                    recaptcha_change_lang(lang);
-                }
+                recaptcha_change_lang(lang);
             });
         //-->
         </script>
