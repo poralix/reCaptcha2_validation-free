@@ -92,6 +92,7 @@ fi;
 tar -zxf "${TMP_FILE}" -C ${TMP_DIR} --strip-components=1;
 cp -rf ${TMP_DIR}/* "${DIR_INSTALL}";
 rm -rf "${TMP_DIR}";
+[ -d "${DIR_INSTALL}/_data/ips/" ] || mkdir -p "${DIR_INSTALL}/_data/ips/";
 chown -R www-data:www-data ${DIR_INSTALL};
 
 # Restoring config file
