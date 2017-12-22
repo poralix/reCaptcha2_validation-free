@@ -36,6 +36,12 @@ error_reporting(0);
 
 require_once('config.inc.php');
 
+header("Expires: Mon, 29 Jun 1981 05:00:00 GMT");
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
 if (is_file($template_file)) {
     $_tpl_file="_template/".$template_file;
 } else {
