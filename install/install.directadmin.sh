@@ -88,7 +88,7 @@ if [ -f "${DIR_INSTALL}/_template/captcha.tpl" ]; then
 fi;
 
 # Unpacking files
-tar -zxf "${TMP_FILE}" -C ${TMP_DIR};
+tar -zxf "${TMP_FILE}" -C ${TMP_DIR} --strip-components=1;
 cp -rf ${TMP_DIR}/* "${DIR_INSTALL}";
 rm -rf "${TMP_DIR}";
 chown -R webapps:webapps ${DIR_INSTALL};
