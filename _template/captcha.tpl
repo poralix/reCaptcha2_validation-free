@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Serverwide reCAPTCHA VALIDATION FOR WordPress Login page by Poralix $ v.0.3-Free //-->
+        <!-- Serverwide reCAPTCHA VALIDATION FOR WordPress Login page by Poralix $ v.0.4-Free //-->
 
         <title>reCaptcha Validation for WordPress Login Page</title>
 
@@ -85,7 +85,7 @@
                                 <!-- /.lang-ru -->
 
                                 <center id="captcha">
-                                    |CAPTCHA|
+                                    <div id="container"></div>
                                     <script type="text/javascript"></script>
                                     <input type="hidden" name="ref" value="|REF|" />
                                     <input type="hidden" name="uri" value="|URI|" />
@@ -116,31 +116,45 @@
 
         <script type="text/javascript">
         <!--
-            function recaptcha_change_lang(lang)
-            {
+            var changeLanguage = function(lang) {
                 // Hide everything.
                 $('[class^=lang-]').hide();
                 // Switch to the chosen language.
                 $('.lang-' + lang).show();
                 if (lang == 'nl') {
+                    console.log("Changed language to NL");
                     $('button[type="submit"]').html('Bevestig');
                 } else if (lang == 'ru') {
+                    console.log("Changed language to RU");
                     $('button[type="submit"]').html('Продолжить');
                 } else {
+                    console.log("Changed language to EN");
                     $('button[type="submit"]').html('Confirm');
                 }
                 // Set reCAPTCHA language.
-                $('.g-recaptcha').html('');
-                $('#captcha').find('script').replaceWith($('<script>').attr('type', 'text/javascript').attr('src', 'https://www.google.com/recaptcha/api.js?hl=' + lang));
+                $('#captcha').find('script').html('');
+                $('#captcha').find('script').replaceWith($('<script>').attr('type', 'text/javascript').attr('async', '').attr('defer', '').attr('src', 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=' + lang));
             }
+            var notloaded = true;
+            var onloadCallback = function() {
+                if (!notloaded) {
+                    grecaptcha.reset();
+                    console.log('Reset reCaptcha');
+                } else {
+                    notloaded = grecaptcha.render('container', {
+                          'sitekey' : '|SITEKEY|'
+                    });
+                    console.log('Render reCaptcha');
+                }
+            };
             $('.change-lang').click(function(e) {
                 e.preventDefault();
                 var lang = $(this).attr('data-lang');
-                recaptcha_change_lang(lang);
+                changeLanguage(lang);
             });
-            $( window ).load(function() {
+            $(window).load(function() {
                 var lang="|LANG|";
-                recaptcha_change_lang(lang);
+                changeLanguage(lang);
             });
         //-->
         </script>

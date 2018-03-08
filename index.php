@@ -1,14 +1,14 @@
 <?php
 ##############################################################################
 #
-#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.3-Free
+#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.4-Free
 #
-#    Copyright (C) 2016,2017 Alex S Grebenschikov
+#    Copyright (C) 2016-2018 Alex S Grebenschikov
 #    Written by Alex S Grebenschikov
 #            web-site:  www.poralix.com
 #            emails to: support@poralix.com
 #
-#    Last modified: Thu Nov 23 16:01:34 +07 2017
+#    Last modified: Thu Mar  8 13:57:58 +07 2018
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -54,14 +54,21 @@ if (is_file($css_file)) {
 }
 $ERROR="";
 
-
 $REF=(isset($_POST["ref"]) && $_POST["ref"]) ? $_POST["ref"] : ((isset($_GET["ref"]) && $_GET["ref"]) ? $_GET["ref"] : false);
 $URI=(isset($_POST["uri"]) && $_POST["uri"]) ? $_POST["uri"] : ((isset($_GET["uri"]) && $_GET["uri"]) ? $_GET["uri"] : false);
 $REDIRECTED_IP=(isset($_POST["c"]) && $_POST["c"]) ? $_POST["c"] : ((isset($_GET["c"]) && $_GET["c"]) ? $_GET["c"] : false);
 $CLIENT_IP=(isset($_SERVER["REMOTE_ADDR"]) && $_SERVER["REMOTE_ADDR"]) ? $_SERVER["REMOTE_ADDR"] : false;
 $LANG=(isset($_SERVER["HTTP_ACCEPT_LANGUAGE"]) && $_SERVER["HTTP_ACCEPT_LANGUAGE"]) ? strtolower(substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2)): "en";
 
-$COMPANY_HTML = "<a href='".strip_tags($company_site)."' target='_blank'>".strip_tags($company_name)."</a>";
+$publickey = htmlspecialchars(strip_tags($publickey));
+$company_site = htmlspecialchars(strip_tags($company_site));
+$company_name = htmlspecialchars(strip_tags($company_name));
+
+if ($company_site && $company_name) {
+    $COMPANY_HTML = "<a href='".$company_site."' target='_blank'>".$company_name."</a>";
+} else {
+    $COMPANY_HTML = '';
+}
 
 $recaptcha_response=(isset($_POST["g-recaptcha-response"]) && $_POST["g-recaptcha-response"]) ? $_POST["g-recaptcha-response"] : false;
 $api_response = false;
@@ -152,6 +159,7 @@ if (is_file($_tpl_file) && ($TPL=file_get_contents($_tpl_file)))
     $REPLACES = [
         "LANG"               => $LANG,
         "CAPTCHA"            => $CAPTCHA,
+        "SITEKEY"            => $publickey,
         "ERROR"              => $ERROR,
         "REF"                => addslashes(htmlspecialchars($REF)),
         "URI"                => addslashes(htmlspecialchars($URI)),

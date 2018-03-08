@@ -2,9 +2,9 @@
 # set -x
 ##############################################################################
 #
-#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.3-Free
+#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.4-Free
 #
-#    Copyright (C) 2016,2017 Alex S Grebenschikov
+#    Copyright (C) 2016-2018 Alex S Grebenschikov
 #    Written by Alex S Grebenschikov
 #            web-site:  www.poralix.com
 #            emails to: support@poralix.com

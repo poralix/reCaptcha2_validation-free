@@ -1,10 +1,10 @@
 # Version
 
-Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.3-Free (beta)
+Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.4-Free (beta)
 
 # Copyright notice
 
-Copyright (C) 2016,2017 Alex S Grebenschikov.
+Copyright (C) 2016-2018 Alex S Grebenschikov.
 Written by Alex S Grebenschikov.
 
 Copyright (c) 2007 reCAPTCHA -- http://recaptcha.net
@@ -71,6 +71,10 @@ $publickey  = "<Site Key>";';
 $privatekey = "<Secret Key>";';
 ```
 with your actual keys!
+
+# History of changes
+
+- version 0.4: Updated template with a new model of reCaptcha render, added usage of grecaptcha.reset().
 
 # LICENSE
 
