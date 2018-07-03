@@ -1,6 +1,6 @@
 # Version
 
-Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.4-Free (beta)
+Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.5-Free (beta)
 
 # Copyright notice
 

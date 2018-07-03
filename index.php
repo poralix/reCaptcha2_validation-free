@@ -1,14 +1,14 @@
 <?php
 ##############################################################################
 #
-#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.4-Free
+#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.5-Free
 #
 #    Copyright (C) 2016-2018 Alex S Grebenschikov
 #    Written by Alex S Grebenschikov
 #            web-site:  www.poralix.com
 #            emails to: support@poralix.com
 #
-#    Last modified: Thu Mar  8 13:57:58 +07 2018
+#    Last modified: Tue Jul  3 14:03:43 +07 2018
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -42,14 +42,12 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
-if (is_file($template_file)) {
-    $_tpl_file="_template/".$template_file;
-} else {
+$_tpl_file="_template/".preg_replace("/[^a-z0-9\.\-\_]/", "", strtolower($template_file));
+if (!is_file($_tpl_file)) {
     $_tpl_file="_template/captcha.tpl";
 }
-if (is_file($css_file)) {
-    $_css_file="_css/".$css_file;
-} else {
+$_css_file="_css/".preg_replace("/[^a-z0-9\.\-\_]/", "", strtolower($css_file));
+if (!is_file($_css_file)) {
     $_css_file="_css/core.css";
 }
 $ERROR="";
