@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Serverwide reCAPTCHA VALIDATION FOR WordPress Login page by Poralix $ v.0.5-Free //-->
+        <!-- Serverwide reCAPTCHA VALIDATION FOR WordPress Login page by Poralix $ v.0.6-Free //-->
 
         <title>reCaptcha Validation for WordPress Login Page</title>
 

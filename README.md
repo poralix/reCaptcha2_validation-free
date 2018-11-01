@@ -1,6 +1,6 @@
 # Version
 
-Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.5-Free (beta)
+Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.6-Free (beta)
 
 # Copyright notice
 
@@ -72,8 +72,24 @@ $privatekey = "<Secret Key>";';
 ```
 with your actual keys!
 
+# Exclude a domain from reCaptcha protection
+
+Since version 0.6 you can disable reCaptcha for one or several domains by following the guide:
+
+- Go to a document root of your domain (for directadmin servers it's under public_html/ or pritvate_html/ directories)
+- Create an empty file .disable_recaptcha
+
+# Enable reCaptcha for a domain
+
+If you previously disabled reCaptcha for a domain follow the guide to enable it back:
+
+- Go to a domain's document root
+- Remove a file .disable_recaptcha
+
 # History of changes
 
+- version 0.6: New feature: excluding domains from reCaptcha protection 
+- version 0.5: Fixed issues with connecting custom templates
 - version 0.4: Updated template with a new model of reCaptcha render, added usage of grecaptcha.reset().
 
 # LICENSE
