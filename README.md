@@ -72,6 +72,17 @@ $privatekey = "<Secret Key>";';
 ```
 with your actual keys!
 
+# Uninstallation
+
+In case you want to remove the reCaptcha run the script:
+
+```
+cd $(ls -1d /var/www/html/__captcha_validation_free-*)
+./uninstall/uninstall.sh
+```
+
+After the script cleans cron and Apache config you can remove the directory `/var/www/html/__captcha_validation_free-*`
+
 # Exclude a domain from reCaptcha protection
 
 Since version 0.6 you can disable reCaptcha for one or several domains by following the guide:
