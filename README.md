@@ -1,10 +1,10 @@
 # Version
 
-Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.6-Free (beta)
+Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.7-Free (beta)
 
 # Copyright notice
 
-Copyright (C) 2016-2018 Alex S Grebenschikov.
+Copyright (C) 2016-2020 Alex S Grebenschikov.
 Written by Alex S Grebenschikov.
 
 Copyright (c) 2007 reCAPTCHA -- http://recaptcha.net
@@ -88,6 +88,7 @@ If you previously disabled reCaptcha for a domain follow the guide to enable it 
 
 # History of changes
 
+- version 0.7: Uninstall scripts added
 - version 0.6: New feature: excluding domains from reCaptcha protection 
 - version 0.5: Fixed issues with connecting custom templates
 - version 0.4: Updated template with a new model of reCaptcha render, added usage of grecaptcha.reset().

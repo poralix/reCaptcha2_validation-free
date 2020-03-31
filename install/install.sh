@@ -2,7 +2,7 @@
 # set -x
 ##############################################################################
 #
-#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.6-Free
+#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.7-Free
 #
 #    Copyright (C) 2016-2018 Alex S Grebenschikov
 #    Written by Alex S Grebenschikov
@@ -33,20 +33,22 @@
 #
 #############################################################################
 
-echo
+RUN_DIR="$(dirname "$(readlink -fm "$0")")"; #"
+
+echo;
 echo "Detecting Control Panel on your server!";
-echo
+echo;
 
 if [ -e "/usr/local/directadmin/directadmin" ]; then
-	echo "Running reCAPTCHA VALIDATION DirectAdmin installer"
-	echo
-	sh install.directadmin.sh
+    echo "Running reCAPTCHA VALIDATION DirectAdmin installer";
+    echo;
+    sh "${RUN_DIR}/install.directadmin.sh";
 elif [ -e "/usr/local/cpanel/version" ]; then
-	echo "Running reCAPTCHA VALIDATION cPanel installer"
-	echo
-	sh install.cpanel.sh
+    echo "Running reCAPTCHA VALIDATION cPanel installer";
+    echo;
+    sh "${RUN_DIR}/install.cpanel.sh";
 else
-	echo "Running reCAPTCHA VALIDATION generic installer"
-	echo
-	sh install.generic.sh
-fi
+    echo "Running reCAPTCHA VALIDATION generic installer";
+    echo;
+    sh "${RUN_DIR}/install.generic.sh";
+fi;
