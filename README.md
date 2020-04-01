@@ -1,4 +1,4 @@
-=# Version
+# Version
 
 Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.7-Free (beta)
 
