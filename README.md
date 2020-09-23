@@ -1,11 +1,13 @@
 # Version
 
-Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.7-Free (beta)
+Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.8-Free (beta)
 
 # Copyright notice
 
 Copyright (C) 2016-2020 Alex S Grebenschikov.
 Written by Alex S Grebenschikov.
+
+Turkish translation made by Evrim Altay Koluaçık (@altayevrim)
 
 Copyright (c) 2007 reCAPTCHA -- http://recaptcha.net
 AUTHORS: Mike Crawford, Ben Maurer
@@ -99,6 +101,7 @@ If you previously disabled reCaptcha for a domain follow the guide to enable it 
 
 # History of changes
 
+- version 0.8: Turkish translation added. Switched to jQuery 2.2.4.
 - version 0.7: Uninstall scripts added
 - version 0.6: New feature: excluding domains from reCaptcha protection 
 - version 0.5: Fixed issues with connecting custom templates
