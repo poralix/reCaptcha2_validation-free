@@ -40,6 +40,11 @@
                                     Поддержка JavaScript в вашем браузере отключена. Для того, чтобы получить доступ к сайту, поддержка JavaScript должна быть включена.
                                 </p>
                             </div>
+                            <div class="lang-tr">
+                                <p>
+                                    JavaScript devre dışı. Website'ye erişebilmek için Javascript'i aktifleştirmeniz gerekli.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </noscript>
@@ -48,6 +53,7 @@
                         <li><span class="change-lang" data-lang="en">EN</span></li>
                         <li><span class="change-lang" data-lang="nl">NL</span></li>
                         <li><span class="change-lang" data-lang="ru">RU</span></li>
+                        <li><span class="change-lang" data-lang="tr">TR</span></li>
                     </ol>
                     <div class="panel panel-default">
                         <form id="validate" action="" method="post">
@@ -83,7 +89,16 @@
                                     <div class="warning">|WARNING_RU|</div>
                                 </div>
                                 <!-- /.lang-ru -->
-
+                                <div class="lang-tr" style="dispay: none;">
+                                    <p>
+                                        Bu sayfa WordPress kullanan siteler için ekstra güvenlik amacıyla otomatik 
+                                        olarak oluşturulmuştur.
+                                        WordPress kullanıcı girişi yapmadan önce insan olduğunuzu doğrulamamız gerekmektedir.
+                                        Aşağıda yer alan reCaptcha doğrulamasını geçerek giriş paneline erişebilirsiniz.
+                                    </p>
+                                    <div class="warning">|WARNING_TR|</div>
+                                </div>
+                                <!-- /.lang-tr -->
                                 <center id="captcha">
                                     <div id="container"></div>
                                     <script type="text/javascript"></script>
@@ -104,6 +119,9 @@
                         </div>
                         <div class="lang-ru" style="dispay: none;">
                             Размещается на хостинге |COMPANY_HTML|.
+                        </div>
+                        <div class="lang-tr" style="dispay: none;">
+                            Barındırıcı |COMPANY_HTML|.
                         </div>
                     </div>
                 </div>
@@ -127,6 +145,9 @@
                 } else if (lang == 'ru') {
                     console.log("Changed language to RU");
                     $('button[type="submit"]').html('Продолжить');
+                } else if (lang == 'tr') {
+                    console.log("Changed language to TR");
+                    $('button[type="submit"]').html('Devam Et');
                 } else {
                     console.log("Changed language to EN");
                     $('button[type="submit"]').html('Confirm');
