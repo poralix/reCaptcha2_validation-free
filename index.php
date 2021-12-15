@@ -152,6 +152,7 @@ if (is_file($_tpl_file) && ($TPL=file_get_contents($_tpl_file)))
         $WARNING_NL = 'We hebben vastgesteld dat het IP-adres waarmee u verbinding hebt gemaakt met <a href="'.htmlspecialchars($REF).'" target="_blank">de doelsite</a> anders is dan het huidige IP-adres <b>'.$CLIENT_IP.'</b>, en dit kan problemen met IP-validatie veroorzaken.';
         $WARNING_RU = 'IP адрес, с которого вы подключились <a href="'.htmlspecialchars($REF).'" target="_blank">к сайту</a> не соответствует текущему <b>'.$CLIENT_IP.'</b>, что в свою очередь может привести к зацикливанию авторизации IP.';
         $WARNING_TR = 'Sistemlerimiz <a href="'.htmlspecialchars($REF).'" target="_blank">hedef siteye</a> bağlanmak için kullandığınız IP adresinin, şu an kullandığınızdan <b>'.$CLIENT_IP.'</b> farklı olduğunu tespit etti, bu IP doğrulaması sırasında sorunlar oluşturabilir.';
+        $WARNING_ES = 'Hemos detectado que la direccion IP con la que se conecta <a href="'.htmlspecialchars($REF).'" target="_blank">al sitio web</a> es distinta a su dirección IP actual <b>'.$CLIENT_IP.'</b>, lo cual puede traer problemas con la validación.';
     }
 
     $HTML = $TPL;
@@ -171,6 +172,7 @@ if (is_file($_tpl_file) && ($TPL=file_get_contents($_tpl_file)))
         "WARNING_NL"         => $WARNING_NL,
         "WARNING_RU"         => $WARNING_RU,
         "WARNING_TR"         => $WARNING_TR,
+        "WARNING_ES"         => $WARNING_ES,
         ];
     foreach ($REPLACES as $TOKEN => $VAL)
     {
