@@ -45,6 +45,11 @@
                                     JavaScript devre dışı. Website'ye erişebilmek için Javascript'i aktifleştirmeniz gerekli.
                                 </p>
                             </div>
+                            <div class="lang-es">
+                                <p>
+                                    JavaScript se encuentra deshabilitado. Para ingresar al sitio es necesario tenga soporte para JavaScript habilitado en su navegador.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </noscript>
@@ -54,6 +59,7 @@
                         <li><span class="change-lang" data-lang="nl">NL</span></li>
                         <li><span class="change-lang" data-lang="ru">RU</span></li>
                         <li><span class="change-lang" data-lang="tr">TR</span></li>
+                        <li><span class="change-lang" data-lang="es">ES</span></li>
                     </ol>
                     <div class="panel panel-default">
                         <form id="validate" action="" method="post">
@@ -99,6 +105,15 @@
                                     <div class="warning">|WARNING_TR|</div>
                                 </div>
                                 <!-- /.lang-tr -->
+                                <div class="lang-es" style="dispay: none;">
+                                    <p>
+                                        Esta es una medida de seguridad para Wordpress, antes de ingresar al sitio
+                                        por favor confirme que Usted no es un bot. Para esto debe completar el reCaptcha
+                                        que se encuentra a continuación.
+                                    </p>
+                                    <div class="warning">|WARNING_ES|</div>
+                                </div>
+                                <!-- /.lang-es -->
                                 <center id="captcha">
                                     <div id="container"></div>
                                     <script type="text/javascript"></script>
@@ -122,6 +137,9 @@
                         </div>
                         <div class="lang-tr" style="dispay: none;">
                             Barındırıcı |COMPANY_HTML|.
+                        </div>
+                        <div class="lang-es" style="dispay: none;">
+                            Hosteado por |COMPANY_HTML|.
                         </div>
                     </div>
                 </div>
@@ -148,6 +166,9 @@
                 } else if (lang == 'tr') {
                     console.log("Changed language to TR");
                     $('button[type="submit"]').html('Devam Et');
+                } else if (lang == 'es') {
+                    console.log("Changed language to ES");
+                    $('button[type="submit"]').html('Confirmar');
                 } else {
                     console.log("Changed language to EN");
                     $('button[type="submit"]').html('Confirm');
