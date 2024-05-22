@@ -146,7 +146,7 @@ if (is_file($_tpl_file) && ($TPL = file_get_contents($_tpl_file)))
     if (isset($use_local_js) && $use_local_js == false)
     {
         $LOAD_JQUERY_JS = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>';
-        $LOAD_BOOTSTRAP_JS = '<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"></script>';
+        $LOAD_BOOTSTRAP_JS = '<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>';
     }
     else
     {
