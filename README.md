@@ -23,8 +23,10 @@ AUTHORS: Mike Crawford, Ben Maurer
 - With this you will have a Google's reCaptcha 2 installed server-wide.
 - No need to install reCaptcha individually per user or per site.
 - The addon will remember user's IP for 7 days (default, can be changed).
-- English/Dutch/Russian languages shipped by default.
+- English, Dutch, Russian, Turkish, Spanish languages shipped by default.
 - IP detections works for sites behind CloudFlare proxy.
+- Apache webserver is supported
+- Servers with DirectAdmin, CPanel, generic are supported
 
 # How it works
 
