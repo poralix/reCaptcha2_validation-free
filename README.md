@@ -4,7 +4,7 @@ Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.8-Free (beta)
 
 # Copyright notice
 
-Copyright (C) 2016-2020 Alex S Grebenschikov.
+Copyright (C) 2016-2024 Alex S Grebenschikov.
 Written by Alex S Grebenschikov.
 
 Turkish translation made by Evrim Altay Koluaçık (@altayevrim)

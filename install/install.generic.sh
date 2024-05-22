@@ -4,12 +4,12 @@
 #
 #    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.8-Free
 #
-#    Copyright (C) 2016-2018 Alex S Grebenschikov
+#    Copyright (C) 2016-2024 Alex S Grebenschikov
 #    Written by Alex S Grebenschikov
 #            web-site:  www.poralix.com
 #            emails to: support@poralix.com
 #
-#    Last modified: Thu Nov  1 13:42:11 +07 2018
+#    Last modified: Wed May 22 13:07:54 +07 2024
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ copyright()
     echo "#                                                                            #";
     echo "#    reCAPTCHA VALIDATION FOR WordPress Login page $ ${V}              #";
     echo "#                                                                            #";
-    echo "#    Copyright (C) 2016-2018  Alex S Grebenschikov                           #";
+    echo "#    Copyright (C) 2016-2024  Alex S Grebenschikov                           #";
     echo "#    Written by Alex S Grebenschikov                                         #";
     echo "#            web-site:  www.poralix.com                                      #";
     echo "#            emails to: support@poralix.com                                  #";
@@ -61,7 +61,7 @@ copyright;
 TMP_FILE="/var/www/html/reCaptcha2_validation-free.tar.gz";
 TMP_DIR=$(mktemp -d /var/www/html/tmp_reCaptcha2_validation.XXXXX);
 
-DIR_INSTALL="/var/www/html/__captcha_validation_free-$(hostname | openssl md5 | sed 's/^.* //')";
+DIR_INSTALL="/var/www/html/__captcha_validation_free-$(hostname -f | openssl md5 | sed 's/^.* //')";
 CRON_FILE="/etc/cron.daily/clear_recaptcha_ips.cron";
 
 URL="https://github.com/poralix/reCaptcha2_validation-free/archive/master.tar.gz";
@@ -135,7 +135,7 @@ echo '        RewriteCond %{DOCUMENT_ROOT}/.disable_recaptcha !-f' >> ${HPRC_FIL
 echo '        RewriteCond '${DIR_INSTALL}'/_data/ips/_%{REMOTE_ADDR}.dat !-f' >> ${HPRC_FILE};
 echo '        RewriteCond '${DIR_INSTALL}'/_data/ips/_%{HTTP:X-Forwarded-For}.dat !-f' >> ${HPRC_FILE};
 echo '        RewriteCond '${DIR_INSTALL}'/_data/ips/_%{HTTP:CF-Connecting-IP}.dat !-f' >> ${HPRC_FILE};
-echo '        RewriteRule ^ http://'$(hostname)'/__captcha_validation/?ref=%{REQUEST_SCHEME}://%{SERVER_NAME}&uri=%{REQUEST_URI}&c=%{REMOTE_ADDR} [L]' >> ${HPRC_FILE};
+echo '        RewriteRule ^ http://'$(hostname -f)'/__captcha_validation/?ref=%{REQUEST_SCHEME}://%{SERVER_NAME}&uri=%{REQUEST_URI}&c=%{REMOTE_ADDR} [L]' >> ${HPRC_FILE};
 echo '</LocationMatch>' >> ${HPRC_FILE};
 echo "" >> ${HPRC_FILE};
 
@@ -150,7 +150,7 @@ fi;
 echo "Installation completed";
 echo "";
 echo "IMPORTANT!";
-echo "  Go to https://www.google.com/recaptcha/admin#list and register your $(hostname) there";
+echo "  Go to https://www.google.com/recaptcha/admin#list and register your $(hostname -f) there";
 echo "  You will get <Site key> and <Secret key> which you should add into the config file: config.inc.php";
 echo "  Open ${DIR_INSTALL}/config.inc.php and update:"
 echo "";
