@@ -2,14 +2,14 @@
 # set -x
 ##############################################################################
 #
-#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.8-Free
+#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.9-Free
 #
 #    Copyright (C) 2016-2024 Alex S Grebenschikov
 #    Written by Alex S Grebenschikov
 #            web-site:  www.poralix.com
 #            emails to: support@poralix.com
 #
-#    Last modified: Wed May 22 13:07:54 +07 2024
+#    Last modified: Wed May 22 15:30:46 +07 2024
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 #
 #############################################################################
 
-V="v.0.8-Free";
+V="v.0.9-Free";
 
 copyright()
 {

@@ -2,7 +2,7 @@
  * Core CSS
  */
 
-p, div {color: dimgrey; font-family: 'Source Sans Pro', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.45;}
+p, div {color: dimgrey; font-family: 'Source Sans Pro', sans-serif; font-size: 16px; font-weight: 200; line-height: 1.45;}
 .centered { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 .change-lang { cursor: pointer; }
 .footer { text-align: center; }

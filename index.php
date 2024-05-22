@@ -1,14 +1,14 @@
 <?php
 ##############################################################################
 #
-#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.8-Free
+#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.9-Free
 #
-#    Copyright (C) 2016-2018 Alex S Grebenschikov
+#    Copyright (C) 2016-2024 Alex S Grebenschikov
 #    Written by Alex S Grebenschikov
 #            web-site:  www.poralix.com
 #            emails to: support@poralix.com
 #
-#    Last modified: Wed Sep 23 19:23:31 +07 2020
+#    Last modified: Wed May 22 15:30:46 +07 2024
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -42,33 +42,39 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
-$_tpl_file="_template/".preg_replace("/[^a-z0-9\.\-\_]/", "", strtolower($template_file));
+$_tpl_file = "_template/".preg_replace("/[^a-z0-9\.\-\_]/", "", strtolower($template_file));
 if (!is_file($_tpl_file)) {
-    $_tpl_file="_template/captcha.tpl";
+    $_tpl_file = "_template/captcha.tpl";
 }
-$_css_file="_css/".preg_replace("/[^a-z0-9\.\-\_]/", "", strtolower($css_file));
+$_css_file = "_css/".preg_replace("/[^a-z0-9\.\-\_]/", "", strtolower($css_file));
 if (!is_file($_css_file)) {
-    $_css_file="_css/core.css";
+    $_css_file = "_css/core.css";
 }
-$ERROR="";
+$ERROR = "";
 
-$REF=(isset($_POST["ref"]) && $_POST["ref"]) ? $_POST["ref"] : ((isset($_GET["ref"]) && $_GET["ref"]) ? $_GET["ref"] : false);
-$URI=(isset($_POST["uri"]) && $_POST["uri"]) ? $_POST["uri"] : ((isset($_GET["uri"]) && $_GET["uri"]) ? $_GET["uri"] : false);
-$REDIRECTED_IP=(isset($_POST["c"]) && $_POST["c"]) ? $_POST["c"] : ((isset($_GET["c"]) && $_GET["c"]) ? $_GET["c"] : false);
-$CLIENT_IP=(isset($_SERVER["REMOTE_ADDR"]) && $_SERVER["REMOTE_ADDR"]) ? $_SERVER["REMOTE_ADDR"] : false;
-$LANG=(isset($_SERVER["HTTP_ACCEPT_LANGUAGE"]) && $_SERVER["HTTP_ACCEPT_LANGUAGE"]) ? strtolower(substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2)): "en";
+$REF = (isset($_POST["ref"]) && $_POST["ref"]) ? $_POST["ref"] : ((isset($_GET["ref"]) && $_GET["ref"]) ? $_GET["ref"] : false);
+$URI = (isset($_POST["uri"]) && $_POST["uri"]) ? $_POST["uri"] : ((isset($_GET["uri"]) && $_GET["uri"]) ? $_GET["uri"] : false);
+$REDIRECTED_IP = (isset($_POST["c"]) && $_POST["c"]) ? $_POST["c"] : ((isset($_GET["c"]) && $_GET["c"]) ? $_GET["c"] : false);
+$CLIENT_IP = (isset($_SERVER["REMOTE_ADDR"]) && $_SERVER["REMOTE_ADDR"]) ? $_SERVER["REMOTE_ADDR"] : false;
+
+# DETECT USER's LANGUAGE
+$_lang_dir = "_lang/";
+$LANG = (isset($_SERVER["HTTP_ACCEPT_LANGUAGE"]) && $_SERVER["HTTP_ACCEPT_LANGUAGE"]) ? strtoupper(substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2)): "EN";
+if (!preg_match('/^[A-Za-z]*$/', $LANG)){$LANG = "EN";}
+$_lang_default_file = (is_file($_lang_dir."lang_".$LANG.".php")) ? $_lang_dir."lang_".$LANG.".php" : $_lang_dir."lang_EN.php";
+$_LANG['default'] = parse_ini_file($_lang_default_file, false);
 
 $publickey = htmlspecialchars(strip_tags($publickey));
 $company_site = htmlspecialchars(strip_tags($company_site));
 $company_name = htmlspecialchars(strip_tags($company_name));
 
 if ($company_site && $company_name) {
-    $COMPANY_HTML = "<a href='".$company_site."' target='_blank'>".$company_name."</a>";
+    $HOSTED_BY = sprintf($_LANG['default']['HOSTED_BY'], "<a href='".$company_site."' target='_blank'>".$company_name."</a>");
 } else {
-    $COMPANY_HTML = '';
+    $HOSTED_BY = '';
 }
 
-$recaptcha_response=(isset($_POST["g-recaptcha-response"]) && $_POST["g-recaptcha-response"]) ? $_POST["g-recaptcha-response"] : false;
+$recaptcha_response = (isset($_POST["g-recaptcha-response"]) && $_POST["g-recaptcha-response"]) ? $_POST["g-recaptcha-response"] : false;
 $api_response = false;
 
 if ($recaptcha_response)
@@ -97,7 +103,7 @@ if ($recaptcha_response)
             // successful verification
             if ($CLIENT_IP)
             {
-                $IPF=$datadir."_".$CLIENT_IP.".dat";
+                $IPF = $datadir."_".$CLIENT_IP.".dat";
                 if (is_dir($datadir))
                 {
                     if ($handle = fopen($IPF, 'w'))
@@ -115,15 +121,17 @@ if ($recaptcha_response)
             {
                 $URI.="?validated=".md5(uniqid(time()));
             }
-            $location=urldecode($REF."".$URI);
+            $location = urldecode($REF."".$URI);
             header("Location: ".$location."\n");
         }
     }
 }
 
-$CAPTCHA='<div class="g-recaptcha" data-sitekey="'.$publickey.'"></div>';
+$CAPTCHA = '<div class="g-recaptcha" data-sitekey="'.$publickey.'"></div>';
 
-if (is_file($_tpl_file) && ($TPL=file_get_contents($_tpl_file)))
+
+
+if (is_file($_tpl_file) && ($TPL = file_get_contents($_tpl_file)))
 {
     if (isset($use_local_css) && $use_local_css == false)
     {
@@ -137,22 +145,19 @@ if (is_file($_tpl_file) && ($TPL=file_get_contents($_tpl_file)))
     }
     if (isset($use_local_js) && $use_local_js == false)
     {
-        $LOAD_JQUERY_JS = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>';
+        $LOAD_JQUERY_JS = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>';
         $LOAD_BOOTSTRAP_JS = '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>';
     }
     else
     {
-        $LOAD_JQUERY_JS = '<script src="/__captcha_validation/_js/jquery-2.2.4.min.js"></script>';
+        $LOAD_JQUERY_JS = '<script src="/__captcha_validation/_js/jquery-3.7.1.min.js"></script>';
         $LOAD_BOOTSTRAP_JS = '<script src="/__captcha_validation/_js/bootstrap.min.js"></script>';
     }
 
+    $LANG_WARNING = "";
     if ($REDIRECTED_IP && ($REDIRECTED_IP !== $CLIENT_IP))
     {
-        $WARNING_EN = 'We detected that IP address from which you connected to <a href="'.htmlspecialchars($REF).'" target="_blank">the target site</a> differs from the current IP <b>'.$CLIENT_IP.'</b>, and it might bring to issues with IP validation.';
-        $WARNING_NL = 'We hebben vastgesteld dat het IP-adres waarmee u verbinding hebt gemaakt met <a href="'.htmlspecialchars($REF).'" target="_blank">de doelsite</a> anders is dan het huidige IP-adres <b>'.$CLIENT_IP.'</b>, en dit kan problemen met IP-validatie veroorzaken.';
-        $WARNING_RU = 'IP адрес, с которого вы подключились <a href="'.htmlspecialchars($REF).'" target="_blank">к сайту</a> не соответствует текущему <b>'.$CLIENT_IP.'</b>, что в свою очередь может привести к зацикливанию авторизации IP.';
-        $WARNING_TR = 'Sistemlerimiz <a href="'.htmlspecialchars($REF).'" target="_blank">hedef siteye</a> bağlanmak için kullandığınız IP adresinin, şu an kullandığınızdan <b>'.$CLIENT_IP.'</b> farklı olduğunu tespit etti, bu IP doğrulaması sırasında sorunlar oluşturabilir.';
-        $WARNING_ES = 'Hemos detectado que la direccion IP con la que se conecta <a href="'.htmlspecialchars($REF).'" target="_blank">al sitio web</a> es distinta a su dirección IP actual <b>'.$CLIENT_IP.'</b>, lo cual puede traer problemas con la validación.';
+        $LANG_WARNING = sprintf($_LANG['default']['WARNING'],htmlspecialchars($REF),$CLIENT_IP);
     }
 
     $HTML = $TPL;
@@ -168,12 +173,12 @@ if (is_file($_tpl_file) && ($TPL=file_get_contents($_tpl_file)))
         "LOAD_BOOTSTRAP_CSS" => $LOAD_BOOTSTRAP_CSS,
         "LOAD_CORE_CSS"      => $LOAD_CORE_CSS,
         "COMPANY_HTML"       => $COMPANY_HTML,
-        "WARNING_EN"         => $WARNING_EN,
-        "WARNING_NL"         => $WARNING_NL,
-        "WARNING_RU"         => $WARNING_RU,
-        "WARNING_TR"         => $WARNING_TR,
-        "WARNING_ES"         => $WARNING_ES,
-        ];
+        "LANG_TITLE"         => $_LANG['default']['TITLE'],
+        "LANG_NO_JS"         => $_LANG['default']['NO_JS'],
+        "LANG_MAIN_TEXT"     => $_LANG['default']['MAIN_TEXT'],
+        "LANG_HOSTED_BY"     => $HOSTED_BY,
+        "LANG_WARNING"       => $LANG_WARNING,
+    ];
     foreach ($REPLACES as $TOKEN => $VAL)
     {
         $HTML = str_replace("|".$TOKEN."|",$VAL,$HTML);
