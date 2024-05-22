@@ -8,6 +8,7 @@ Copyright (C) 2016-2024 Alex S Grebenschikov.
 Written by Alex S Grebenschikov.
 
 Turkish translation made by Evrim Altay Koluaçık (@altayevrim)
+Spanish translation made by Roberto Alvarado (@ralvaradof)
 
 Copyright (c) 2007 reCAPTCHA -- http://recaptcha.net
 AUTHORS: Mike Crawford, Ben Maurer
