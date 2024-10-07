@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Serverwide reCAPTCHA VALIDATION FOR WordPress Login page by Poralix $ v.0.9-Free //-->
+    <!-- Serverwide reCAPTCHA VALIDATION FOR WordPress Login page by Poralix $ v.0.10-Free //-->
     <title>|LANG_TITLE|</title>
     <!-- Core CSS -->
     |LOAD_BOOTSTRAP_CSS|

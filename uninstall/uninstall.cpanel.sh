@@ -2,7 +2,7 @@
 #set -x
 ##############################################################################
 #
-#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.9-Free
+#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.10-Free
 #
 #    Copyright (C) 2016-2024 Alex S Grebenschikov
 #    Written by Alex S Grebenschikov
@@ -33,7 +33,7 @@
 #
 #############################################################################
 
-V="v.0.9-Free";
+V="v.0.10-Free";
 
 copyright()
 {
