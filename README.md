@@ -1,6 +1,6 @@
 # Version
 
-Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.9-Free (beta)
+Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.10-Free (beta)
 
 # Copyright notice
 
@@ -104,6 +104,7 @@ If you previously disabled reCaptcha for a domain follow the guide to enable it 
 
 # History of changes
 
+- version 0.10: Fixed an installation script for cPanel.
 - version 0.9: Spanish translation added. Switched to jQuery v3.7.1 and Bootstrap v4.6.2. Code optimization added.
 - version 0.8: Turkish translation added. Switched to jQuery 2.2.4.
 - version 0.7: Uninstall scripts added

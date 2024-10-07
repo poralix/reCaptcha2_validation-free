@@ -2,14 +2,14 @@
 #set -x
 ##############################################################################
 #
-#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.9-Free
+#    Serverwide reCAPTCHA VALIDATION FOR WordPress Login page $ v.0.10-Free
 #
 #    Copyright (C) 2016-2024 Alex S Grebenschikov
 #    Written by Alex S Grebenschikov
 #            web-site:  www.poralix.com
 #            emails to: support@poralix.com
 #
-#    Last modified: Wed May 22 15:30:46 +07 2024
+#    Last modified: Mon Oct  7 23:09:36 +07 2024
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 #
 #############################################################################
 
-V="v.0.9-Free";
+V="v.0.10-Free";
 
 copyright()
 {
@@ -57,10 +57,10 @@ fi;
 
 copyright;
 
-TMP_FILE="/usr/local/apache/htdocs/reCaptcha2_validation-free.tar.gz";
-TMP_DIR=$(mktemp -d /usr/local/apache/htdocs/tmp_reCaptcha2_validation.XXXXX);
+TMP_FILE="/var/www/html/reCaptcha2_validation-free.tar.gz";
+TMP_DIR=$(mktemp -d /var/www/html/tmp_reCaptcha2_validation.XXXXX);
 
-DIR_INSTALL="/usr/local/apache/htdocs/__captcha_validation_free-$(hostname -f | openssl md5 | sed 's/^.* //')";
+DIR_INSTALL="/var/www/html/__captcha_validation_free-$(hostname -f | openssl md5 | sed 's/^.* //')";
 CRON_FILE="/etc/cron.daily/clear_recaptcha_ips.cron";
 
 URL="https://github.com/poralix/reCaptcha2_validation-free/archive/master.tar.gz";
